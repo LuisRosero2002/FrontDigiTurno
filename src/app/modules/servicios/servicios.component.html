@@ -1,0 +1,42 @@
+<div class="container">
+    <h1 class="text-center mb-4 py-5">NUESTROS SERVICIOS</h1>
+    <div class="row">
+        <div class="col-md-4 mt-4" *ngFor="let data of dataServicios">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title py-4">{{data.DESCRIPCION}}</h5>
+                    <button class="btn btn-success btn-lg py-3" type="button"
+                        (click)="servicio(data)">SELECCIONAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<p-dialog header="INFO TURNO" [(visible)]="displayModal" [modal]="true" [style]="{width: '60vw'}" [draggable]="false"
+    [resizable]="false">
+    <p-table>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>FECHA</th>
+                <th>LUGAR</th>
+                <th>EMPELADO</th>
+                <th>ESTADO</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-car>
+            <tr>
+                <td>car.vin</td>
+                <td>car.year</td>
+                <td>car.brand</td>
+                <td>car.color</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <ng-template pTemplate="footer">
+        <div class="card-body text-center">
+            <button type="submit" class="btn btn-success w-50" (click)="displayModal=false">OK</button>
+        </div>
+    </ng-template>
+</p-dialog>
