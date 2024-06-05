@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicioService } from './services/servicio.service';
 import { Router } from '@angular/router';
-import { Servicio, Turno } from './models/model.services';
+import { Servicio, Turno, Turno_Descripcion } from './models/model.services';
 
 @Component({
   selector: 'app-servicios',
@@ -12,7 +12,7 @@ export class ServiciosComponent implements OnInit {
 
   dataServicios:Servicio[]
   displayModal: boolean = false 
-  dataTable:any[]
+  dataTable:any
 
 
   constructor(
@@ -43,9 +43,11 @@ export class ServiciosComponent implements OnInit {
 
     this.servicioService.postTurno(inputTurno).subscribe( res => {
       if(Object.keys(res).length){
-        console.log(res);
-        const data :Turno = res
-        this.fomartDataTable(data)
+        
+        this.dataTable = [res]
+        console.log(this.dataTable);
+        this.displayModal = true
+      
       }
     },error => {
       console.error(error);
@@ -54,10 +56,5 @@ export class ServiciosComponent implements OnInit {
     
   }
 
-  fomartDataTable(data:Turno){
-    
-
-
-  }
 
 }

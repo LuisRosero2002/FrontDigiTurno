@@ -12,3 +12,11 @@ export interface Turno {
     FECHA?: Date;
     LUGAR?: string;
 }
+
+export interface Turno_Descripcion {
+    NOMBRE_EMPLEADO: string;
+    SERVICIO_DESCRIPCION: string;
+    ESTADO_DESCRIPCION: string;
+    FECHA: string; 
+    LUGAR: string;
+}
