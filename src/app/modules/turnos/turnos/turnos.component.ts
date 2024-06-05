@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TurnosService } from '../services/turnos.service';
+import { turnos } from '../models/models';
+import { usuario } from '../../auth/models/models';
 
 @Component({
   selector: 'app-turnos',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TurnosComponent implements OnInit {
 
-  constructor() { }
+  dataTable:usuario[]
+
+  constructor(
+    private turnosService: TurnosService
+  ) { }
 
   ngOnInit(): void {
+    this.turnosService.getTurnos().subscribe(
+      res =>{
+        if(res.length > 0){
+          this.dataTable = res
+          console.log(this.dataTable);
+          
+        }else{
+
+        }
+      },error =>{
+        console.error(error);
+        
+      }
+    )
   }
 
 }

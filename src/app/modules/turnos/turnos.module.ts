@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 import { TurnosRoutingModule } from './turnos-routing.module';
 import { TurnosComponent } from './turnos/turnos.component';
 import { TurnosEmpleadoComponent } from './turnos-empleado/turnos-empleado.component';
+import { TableModule } from 'primeng/table';
+import { HttpClientModule } from '@angular/common/http';
+import { TurnosService } from './services/turnos.service';
 
 
 @NgModule({
@@ -13,7 +16,12 @@ import { TurnosEmpleadoComponent } from './turnos-empleado/turnos-empleado.compo
   ],
   imports: [
     CommonModule,
-    TurnosRoutingModule
+    TurnosRoutingModule,
+    TableModule,
+    HttpClientModule
+  ],
+  providers:[
+    TurnosService
   ]
 })
 export class TurnosModule { }
