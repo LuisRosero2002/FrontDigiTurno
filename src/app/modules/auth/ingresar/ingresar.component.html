@@ -4,21 +4,21 @@
             <h2 class="card-title text-center py-5 ">TURNOS</h2>
 
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+                <input type="text" class="form-control" id="floatingInput" 
                     [(ngModel)]="cedula">
                 <label for="floatingInput">INGRESE SU CEDULA</label>
             </div>
             <div class="d-grid gap-2 py-4">
                 <button class="btn btn-success btn-lg" type="button" (click)="ingresar()">INGRESAR</button>
             </div>
-            <div class="text-center ">
+            <!-- <div class="text-center ">
                 <p>
                     NO ESTAS REGISTRADO?
                     <a class="underline" [routerLink]="['login']">
                         REGISTRARSE
                     </a>
                 </p>
-            </div>
+            </div> -->
 
         </div>
     </div>

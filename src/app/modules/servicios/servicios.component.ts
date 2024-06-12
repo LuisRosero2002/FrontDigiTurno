@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServicioService } from './services/servicio.service';
 import { Router } from '@angular/router';
 import { Servicio, Turno, Turno_Descripcion } from './models/model.services';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-servicios',
@@ -25,6 +26,18 @@ export class ServiciosComponent implements OnInit {
       res => {
         if(res.length > 0){
           this.dataServicios = res
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+          });
+      
+          Toast.fire({
+            icon: 'success',
+            title: 'Bienvenido, selecciona un servicio',
+          });
           
         }
       },error => {
@@ -47,6 +60,8 @@ export class ServiciosComponent implements OnInit {
         this.dataTable = [res]
         console.log(this.dataTable);
         this.displayModal = true
+
+    
       
       }
     },error => {
