@@ -9,6 +9,7 @@
                         <th>FECHA</th>
                         <th>LUGAR</th>
                         <th>SERVICIO</th>
+                        <th>ESTADO</th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-data>
@@ -16,6 +17,7 @@
                         <td>{{data.FECHA | date:'shortTime'}}</td>
                         <td>{{data.LUGAR}}</td>
                         <td>{{data.SERVICIO_DESCRIPCION}}</td>
+                        <td>{{data.ESTADO_DESCRIPCION}}</td>
                     </tr>
                 </ng-template>
             </p-table>

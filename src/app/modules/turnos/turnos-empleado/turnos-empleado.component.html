@@ -1,20 +1,20 @@
 <div class="container center-card">
-    <div class="card" style="width: 70rem; height: 30rem;">
-        <div class="row py-5">
+    <div class="card" style="width: 80rem; height: 20rem;">
+        <div class="row py-3">
             <div class="col d-flex justify-content-center">
                 <div class="row">
                     <h2>TURNOS ACTUAL</h2>
-                    <h3>Nombre Cliente</h3>
-                    <h3>servicio</h3>
-                    <h3>Turno</h3>
+                    <h3>Nombre Cliente: {{dataTurnos.CLIENTE}}</h3>
+                    <h3>servicio: {{dataTurnos.SERVICIO_DESCRIPCION}}</h3>
+                    <h3>Turno: {{dataTurnos.LUGAR}}</h3>
                 </div>
 
             </div>
             <div class="col d-flex justify-content-center">
                 <div class="row">
                     <h2>OPCIONES</h2>
-                    <button > SIGUIENTE </button>
-                    <button > FINALIZAR </button>
+                    <button type="submit" class="btn btn-success w-50" (click)="siguinteTurno()">SIGUIENTE</button>
+                    <button type="submit" class="btn btn-danger w-50" (click)="finTurno()">FINALIZAR</button>
 
                 </div>
             </div>

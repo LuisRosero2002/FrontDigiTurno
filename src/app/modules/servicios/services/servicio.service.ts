@@ -45,10 +45,18 @@ export class ServicioService {
     return this.http.get<Turno[]>(url);
   }
 
-  private agregarNuevoTurno(nuevoTurno: any) {
-    const turnosActuales = this.turnosSubject.value;
-    const nuevosTurnos = [nuevoTurno, ...turnosActuales];
+  private agregarNuevoTurno(nuevosTurnos: any) {
     this.turnosSubject.next(nuevosTurnos);
+  }
+
+  public siguienTurno(id:number):Observable<Turno>{
+    const url = `${environment.ApiTurnos}/turno/${id}`;
+    return this.http.get<Turno>(url);
+  }
+
+  public finTurno(id):Observable<any>{
+    const url = `${environment.ApiTurnos}/turnoUpdate`;
+    return this.http.put<any>(url,id);
   }
 
   enviarNuevoTurno(nuevoTurno: any) {

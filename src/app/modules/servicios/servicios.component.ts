@@ -20,7 +20,6 @@ export class ServiciosComponent implements OnInit {
   dataServicios:Servicio[]
   displayModal: boolean = false 
   dataTable:any
-  turnosPendientes$: Observable<Turno[]>;
 
   constructor(
     private servicioService: ServicioService,
@@ -65,7 +64,9 @@ export class ServiciosComponent implements OnInit {
       if(Object.keys(res).length){
         this.dataTable = [res]
         this.displayModal = true
-        this.servicioService.enviarNuevoTurno(res);
+        this.servicioService.getTurnos().subscribe(res2 => {
+          this.servicioService.enviarNuevoTurno(res2);
+        })
       
       }
     },error => {

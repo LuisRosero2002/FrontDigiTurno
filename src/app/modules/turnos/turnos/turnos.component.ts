@@ -43,11 +43,11 @@ export class TurnosComponent implements OnInit {
       this.turnos = turnos;
       console.log(this.turnos);
       
-      if(this.turnos.length > 0){
+      // if(this.turnos.length > 0){
         this.ngZone.run(() => {
           this.router.navigate(['turnos']);
         });
-      }
+      // }
 
       
       
