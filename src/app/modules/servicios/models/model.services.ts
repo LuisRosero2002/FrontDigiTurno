@@ -3,7 +3,7 @@ export interface Servicio {
     DESCRIPCION: string;
 }
 
-export interface Turno {
+export interface Turnos {
     ID_TURNO?: number;
     ID_CLIENTE: number;
     ID_EMPLEADO?: number;
