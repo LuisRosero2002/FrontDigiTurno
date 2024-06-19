@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 export class TurnosEmpleadoComponent implements OnInit {
 
   idEmpleado: number
+  dataAux:any = []
   dataTurnos: Turno = {
     ID: null,
     NOMBRE_EMPLEADO: null,
@@ -30,16 +31,16 @@ export class TurnosEmpleadoComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.idEmpleado = parseInt(params.get('id'));
-      this.mostrarAlerta();
-
     });
+
     this.siguinteTurno();
+    
   }
 
   mostrarAlerta() {
     Swal.fire({
       title: 'Bienvenido',
-      text: 'Has accedido a la vista de turnos del empleado' + this.idEmpleado,
+      text: 'Has accedido a la vista de turnos del empleado ' + this.dataTurnos.NOMBRE_EMPLEADO,
       icon: 'info'
     });
   }
@@ -54,6 +55,18 @@ export class TurnosEmpleadoComponent implements OnInit {
         });
       } else {
         this.dataTurnos = res;
+        if(this.dataTurnos.ID && this.dataAux.length === 0){
+          this.mostrarAlerta();
+          this.dataAux =[this.dataTurnos]
+        }else{
+          if(!this.dataTurnos.ID){
+            Swal.fire({
+              title: `¡Buen trabajo!`,
+              text: "No hay más turnos",
+              icon: "success"
+            });
+          }
+        }
         this.servicioService.getTurnos().subscribe(res2 => {
           this.servicioService.enviarNuevoTurno(res2);
         }, error => {
@@ -80,21 +93,26 @@ export class TurnosEmpleadoComponent implements OnInit {
     const dataInput = { ID: this.dataTurnos['ID'] };
     if (dataInput) {
       this.servicioService.finTurno(dataInput).subscribe(res => {
-        if (res.length === 0) {
+        if ([res].length === 0) {
+          // Swal.fire({
+          //   title: `¡Buen trabajo!`,
+          //   text: "No hay más turnos",
+          //   icon: "success"
+          // });
+        } else {
           Swal.fire({
-            title: `¡Buen trabajo, ${this.dataTurnos.NOMBRE_EMPLEADO}!`,
-            text: "No hay más turnos",
+            title: `¡ Turno Finalizado !`,
+            text: `${res.LUGAR}`,
             icon: "success"
           });
-        } else {
           this.servicioService.getTurnos().subscribe(res2 => {
             this.servicioService.enviarNuevoTurno(res2);
           }, error => {
             console.error(error);
             Swal.fire({
-              title: "Error",
-              text: "Ocurrió un error al obtener los turnos",
-              icon: "error"
+              title: `¡Buen trabajo!`,
+              text: "No hay más turnos",
+              icon: "success"
             });
           });
           console.log(this.dataTurnos);
@@ -102,17 +120,17 @@ export class TurnosEmpleadoComponent implements OnInit {
       }, error => {
         console.error(error);
         Swal.fire({
-          title: "Error",
-          text: "Ocurrió un error al finalizar el turno",
-          icon: "error"
+          title: `¡Buen trabajo!`,
+          text: "No hay más turnos",
+          icon: "success"
         });
       });
     } else {
-      Swal.fire({
-        title: `¡Buen trabajo, ${this.dataTurnos.NOMBRE_EMPLEADO}!`,
-        text: "No hay más turnos",
-        icon: "success"
-      });
+      // Swal.fire({
+      //   title: `¡Buen trabajo, ${this.dataTurnos.NOMBRE_EMPLEADO}!`,
+      //   text: "No hay más turnos",
+      //   icon: "success"
+      // });
     }
   }
 }

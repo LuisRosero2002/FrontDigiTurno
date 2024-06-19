@@ -1,7 +1,7 @@
   <br>
 
-  <p>{{ dataTurnos.NOMBRE_EMPLEADO}}</p>
-  <div class="card text-center" style="margin: auto; width: 940px;font-size: 20px;">
+ 
+  <div class="card text-center" style="margin: auto; width: 60vw;font-size: 20px;">
     <div class="card-header" style="background: aliceblue;">TURNOS ACTUAL </div>
     <div class="card-body" style="font-size: 20px;">
       <h5 class="card-title">{{dataTurnos.SERVICIO_DESCRIPCION}}</h5>
@@ -12,7 +12,7 @@
     </div>
     <div class="card-footer text-muted">
         <a class="btn btn-primary"(click)="siguinteTurno()" style="margin: 5px;">Siguiente</a>
-        <a class="btn btn-primary"(click)="finTurno()">Finalizar</a>
+        <a class="btn btn-danger"(click)="finTurno()">Finalizar</a>
   
     </div>
   </div>
