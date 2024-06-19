@@ -1,23 +1,19 @@
-<div class="container center-card">
-    <div class="card" style="width: 80rem; height: 20rem;">
-        <div class="row py-3">
-            <div class="col d-flex justify-content-center">
-                <div class="row">
-                    <h2>TURNOS ACTUAL</h2>
-                    <h3>Nombre Cliente: {{dataTurnos.CLIENTE}}</h3>
-                    <h3>servicio: {{dataTurnos.SERVICIO_DESCRIPCION}}</h3>
-                    <h3>Turno: {{dataTurnos.LUGAR}}</h3>
-                </div>
+  <br>
 
-            </div>
-            <div class="col d-flex justify-content-center">
-                <div class="row">
-                    <h2>OPCIONES</h2>
-                    <button type="submit" class="btn btn-success w-50" (click)="siguinteTurno()">SIGUIENTE</button>
-                    <button type="submit" class="btn btn-danger w-50" (click)="finTurno()">FINALIZAR</button>
+  <p>{{ dataTurnos.NOMBRE_EMPLEADO}}</p>
+  <div class="card text-center" style="margin: auto; width: 940px;font-size: 20px;">
+    <div class="card-header" style="background: aliceblue;">TURNOS ACTUAL </div>
+    <div class="card-body" style="font-size: 20px;">
+      <h5 class="card-title">{{dataTurnos.SERVICIO_DESCRIPCION}}</h5>
+     <p>Nombre Cliente: {{dataTurnos.CLIENTE}}</p>
+     <p>Turno: {{ dataTurnos.LUGAR }}</p>
 
-                </div>
-            </div>
-        </div>
+     <p>Hora:{{dataTurnos.FECHA | date:'shortTime'}}</p>
     </div>
-</div>
+    <div class="card-footer text-muted">
+        <a href="#" class="btn btn-primary"(click)="siguinteTurno()" style="margin: 5px;">Siguiente</a>
+        <a href="#" class="btn btn-primary"(click)="finTurno()">Finalizar</a>
+  
+    </div>
+  </div>
+  
