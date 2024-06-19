@@ -21,6 +21,15 @@ export class ServiciosComponent implements OnInit {
   displayModal: boolean = false 
   dataTable:any
 
+
+  imagenes = [
+    'assets/img/1.png',
+    'assets/img/2.png',
+    'assets/img/3.png',
+    'assets/img/4.png',
+    'assets/img/5.png'
+
+  ]
   constructor(
     private servicioService: ServicioService,
 
@@ -33,6 +42,12 @@ export class ServiciosComponent implements OnInit {
       res => {
         if(res.length > 0){
           this.dataServicios = res
+          this.dataServicios.forEach((x,i) => {
+            this.dataServicios[i]['img'] = this.imagenes[i]
+          });
+
+          console.log(this.dataServicios);
+          
           const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
